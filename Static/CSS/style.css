@@ -1,0 +1,23 @@
+header{
+ background: url("../images/home.JPG") rgba(0,0,0,0.3);
+ background-blend-mode: multiply;
+ background-position: center;
+ background-size: cover;
+ background-repeat: no-repeat;
+ height: 92%;
+}
+li .nav-link.active{
+ color:rgba(248, 249, 250, 0.75) !important;
+}
+li .nav-link.active:hover{
+ color:beige !important;
+}
+li .nav-link{
+ color:rgba(248, 249, 250, 0.75);
+}
+li .nav-link:hover{
+ color:beige;
+}
+/* .color{
+ color:#3f48cc;
+} */
