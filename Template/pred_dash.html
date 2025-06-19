@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background: #f4f6f9;
+        }
+
+        h1 {
+            text-align: center;
+            padding:0 20px 10px 0;
+            color: #333;
+            margin:10px 0;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card h2 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #444;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        @media (max-width: 500px) {
+            .card img {
+                max-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>House Price Prediction Dashboard</h1>
+
+    <div class="dashboard">
+        <a href="{{url_for('heatmap')}}">
+        <div class="card">
+            <h2>Correlation Heatmap</h2>
+            <img src="{{ url_for('static', filename='correlation_heatmap.png') }}" alt="Correlation Heatmap">
+        </div></a>
+        <a href="{{url_for('distribution')}}">
+        <div class="card">
+            <h2>Sales Price Distribution</h2>
+            <img src="{{ url_for('static', filename='sales_price_distribution.png') }}" alt="Sales Price Distribution">
+        </div></a>
+        <a href="{{url_for('r2scores')}}">
+        <div class="card">
+            <h2>Model Evaluation: R² Score</h2>
+            <img src="{{ url_for('static', filename='r2_scores.png') }}" alt="R2 Score Chart">
+        </div></a>
+        <a href="{{url_for('mae_chart')}}">
+        <div class="card">
+            <h2>Model Evaluation: MAE</h2>
+            <img src="{{ url_for('static', filename='mae_chart.png') }}" alt="MAE Chart">
+        </div></a>
+        <a href="{{url_for('mse_chart')}}">
+        <div class="card">
+            <h2>Model Evaluation: MSE</h2>
+            <img src="{{ url_for('static', filename='mse_chart.png') }}" alt="MSE Chart">
+        </div></a>
+    </div>
+        <br>
+        <br>
+        <br>
+        <p><h1>Model Evaluation Results</h1></p>
+
+    {% for model, scores in metrics.items() %}
+        <div><h2>{{ model }}</h2>
+        <ul>
+            <div>
+            <li><strong>MSE:</strong> {{ scores['MSE'] }}</li>
+            <li><strong>MAE:</strong> {{ scores['MAE'] }}</li>
+            <li><strong>R2:</strong> {{ scores['R2'] }}</li>
+            </div>
+        </ul>
+    </div>
+    {% endfor %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<html>
+ <head>
+  <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+ <script>
+  function error() {
+   var x = document.myform.name.value;
+   var y = document.myform.email.value;
+   var z = document.myform.password.value;
+   var a = document.myform.confirmpassword.value;
+   var b = document.myform.phone.value;
+   if (x != "" && y != "" && z != "" && a != "" && b != "") {
+     if ((!/^[a-zA-Z]+$/.test(x))) {
+       document.getElementById("error").innerHTML = "Please Check Your Name";
+       return false;
+     }
+     if (!/^[a-zA-Z0-9._+%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/) {
+       document.getElementById("error").innerHTML = "Invalid Email Id";
+       return false;
+     }
+     if ((!/[0-9]/.test(b)) || ((b.length) == 0 || (b.length) > 10 || (b.length) != 10)) {
+       document.getElementById("error").innerHTML = "Invalid Mobile Number";
+       return false;
+     }
+     else {
+       document.getElementById("error").innerHTML = "Submission Successful";
+     }
+   }
+   else {
+     document.getElementById("error").innerHTML = "All Fields Are Required!";
+   }
+ }
+ </script>
+</head>
+ <body>
+   <nav class="navbar navbar-expand-lg bg-dark">
+     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mynavbar" aria-controls="mynavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon bg-white"></span>
+     </button>
+     <h4 class="justify-content-start d-lg-block px-4 text-light opacity-75">House Price Prediction</h4>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mynavbar" aria-labelledby="mynavbarLabel">
+     <div class="offcanvas-header">
+       <h5 class="offcanvas-title" id="mynavbarLabel">House Price Prediction</h5>
+       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+     </div>
+     <div class="offcanvas-body bg-dark">
+       <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <li class="nav-item ms-5">
+          <a class="nav-link active fw-bold" aria-current="page" href="{{url_for('welcome')}}">Home</a>
+        </li>
+        <li class="nav-item ms-5">
+         <a class="nav-link active fw-bold" aria-current="page" href="{{url_for('register')}}">Prediction</a>
+       </li>
+       <li class="nav-item ms-5">
+        <a class="nav-link fw-bold" href="{{url_for('register')}}">Dashboard</a>
+      </li>
+         <li class="nav-item ms-5">
+           <a class="nav-link fw-bold" href="{{url_for('register')}}">Services</a>
+         </li>
+         <li class="nav-item ms-5">
+           <a class="nav-link fw-bold" href="{{url_for('register')}}">Contact</a>
+         </li>
+         <li class="nav-item ms-5">
+          <a class="nav-link fw-bold" href="{{url_for('login')}}">Sign in</a>
+        </li>
+        <li class="nav-item ms-5">
+          <a class="nav-link fw-bold" href="{{url_for('logout')}}">Logout</a>
+        </li>
+       </ul>
+     </div>
+    </div>
+    </nav>
+    <header class="overflow-hidden">
+      <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-5 col-10 col-sm-12 col-md-8 col-lg-6">
+          <form  name="myform" onsubmit="return error()" class="text-center" method="post">
+            <h3 class="secondary">Sign Up</h3>
+            <div>
+            <input class="w-100 py-1 rounded-2" name="name" value="" type="text" placeholder="Username">
+            </div>
+            <div class="mt-3">
+              <input class="w-100 py-1 rounded-2" name="email" value="" type="text" placeholder="Email Id">
+            </div>
+            <div class="mt-3">
+              <input class="w-100 py-1 rounded-2" name="password" max="15" value="" type="text" placeholder="Password">
+            </div>
+            <div class="mt-3">
+              <input class="w-100 py-1 rounded-2" name="phone" value="" type="number" placeholder="Phone">
+            </div>
+            <div class="mt-3">
+              <input class="w-50 rounded-2" name="submit" type="submit" value="Sign Up">
+            </div>
+            <span id="error"></span>
+          </form>
+        </div>
+        </div>
+  </header>
+ </body>
+ </html>

@@ -1,0 +1,55 @@
+<html>
+<head>
+  <title>Welcome</title>
+  <style>
+    #modal {
+      display: none; 
+      position: fixed; 
+      top: 0; left: 0; right: 0; bottom: 0;
+      justify-content: center;
+      align-items: center;
+    }
+    #content {
+      background: lavender;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      min-width: 250px;
+    }
+    button {
+      margin: 10px;
+      padding: 8px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="modal">
+  <div id="content">
+    <p>Are you an admin?</p>
+    <button onclick="jump_admin()">Yes</button>
+    <button onclick="jump_dashboard()">No</button>
+  </div>
+</div>
+
+<p>Loading...</p>
+
+<script>
+  function jump_admin() {
+    window.location.href = "{{url_for('admin_login')}}";
+  }
+
+  function jump_dashboard() {
+    window.location.href = "{{url_for('dashboard')}}";
+  }
+
+  // Show the modal when page loads
+  window.onload = function() {
+    document.getElementById('modal').style.display = 'flex';
+  };
+</script>
+
+</body>
+</html>
