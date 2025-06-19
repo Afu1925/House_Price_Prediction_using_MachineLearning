@@ -1,0 +1,22 @@
+{
+    "LinearRegression": {
+        "MSE": 1731518311073.76,
+        "MAE": 1060522.56,
+        "R2": 0.88
+    },
+    "DecisionTreeRegressor": {
+        "MSE": 587210673635.32,
+        "MAE": 594602.21,
+        "R2": 0.96
+    },
+    "RandomForestRegressor": {
+        "MSE": 269716971196.65,
+        "MAE": 402347.95,
+        "R2": 0.98
+    },
+    "GradientBoostingRegressor": {
+        "MSE": 192272218101.72,
+        "MAE": 342257.48,
+        "R2": 0.99
+    }
+}
